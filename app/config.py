@@ -1,0 +1,4 @@
+import os
+
+MAILERLITE_API_KEY = os.getenv("MAILERLITE_API_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")

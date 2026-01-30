@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Status</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h2>Email Logs</h2>
+
+<select id="status">
+  <option value="">All</option>
+  <option value="sent">Sent</option>
+  <option value="failed">Failed</option>
+</select>
+
+<button onclick="loadData()">Filter</button>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th><th>Sender</th><th>Receiver</th>
+      <th>Subject</th><th>Status</th><th>Date</th>
+    </tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+<script>
+let page = 1;
+
+function loadData() {
+  let status = $('#status').val();
+  $.get(`/api/status?page=${page}&status=${status}`, function(res) {
+    $('#rows').empty();
+    res.data.forEach(e => {
+      $('#rows').append(`
+        <tr>
+          <td>${e.id}</td>
+          <td>${e.sender}</td>
+          <td>${e.receiver}</td>
+          <td>${e.subject}</td>
+          <td>${e.status}</td>
+          <td>${e.created_at}</td>
+        </tr>
+      `);
+    });
+  });
+}
+
+function next() { page++; loadData(); }
+function prev() { if (page > 1) page--; loadData(); }
+
+loadData();
+</script>
+
+</body>
+</html>
