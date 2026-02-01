@@ -1,61 +1,238 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Email Status</title>
+
+  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f8fafc, #eef2ff);
+      margin: 0;
+      padding: 40px;
+      color: #0f172a;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    select {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      font-size: 14px;
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    button {
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #6366f1, #22d3ee);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(99, 102, 241, 0.3);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 10px;
+    }
+
+    thead {
+      background: #f1f5f9;
+    }
+
+    th {
+      padding: 14px;
+      text-align: left;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #475569;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    .status {
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .status.sent {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status.failed {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      background: #f1f5f9;
+      color: #334155;
+      box-shadow: none;
+    }
+
+    .pagination button:hover {
+      background: #e0e7ff;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Email Logs</h2>
+  <h2>📧 Email Logs</h2>
 
-<select id="status">
-  <option value="">All</option>
-  <option value="sent">Sent</option>
-  <option value="failed">Failed</option>
-</select>
+  <div class="card">
 
-<button onclick="loadData()">Filter</button>
+    <div class="controls">
+      <select id="status">
+        <option value="">All</option>
+        <option value="pending">Pending</option>
+        <option value="sent">Sent</option>
+        <option value="failed">Failed</option>
+      </select>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>ID</th><th>Sender</th><th>Receiver</th>
-      <th>Subject</th><th>Status</th><th>Date</th>
-    </tr>
-  </thead>
-  <tbody id="rows"></tbody>
-</table>
+      <button onclick="applyFilter()">Filter</button>
+      <button onclick="loadData()" style="background: linear-gradient(135deg, #10b981, #34d399);">🔄 Refresh</button>
+    </div>
 
-<button onclick="prev()">Prev</button>
-<button onclick="next()">Next</button>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Subject</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
 
-<script>
-let page = 1;
+    <div class="pagination">
+      <button onclick="prev()">⬅ Prev</button>
+      <button onclick="next()">Next ➡</button>
+    </div>
 
-function loadData() {
-  let status = $('#status').val();
-  $.get(`/api/status?page=${page}&status=${status}`, function(res) {
-    $('#rows').empty();
-    res.data.forEach(e => {
-      $('#rows').append(`
+  </div>
+
+  <script>
+    let page = 1;
+
+    function loadData() {
+      let status = $('#status').val();
+
+      $.get(`/api/status?page=${page}&status=${status}`, function (res) {
+        $('#rows').empty();
+
+        if (!res.data.length) {
+          $('#rows').append(`
+        <tr>
+          <td colspan="6" class="empty">
+            No email logs found
+          </td>
+        </tr>
+      `);
+          return;
+        }
+
+        res.data.forEach(e => {
+          $('#rows').append(`
         <tr>
           <td>${e.id}</td>
           <td>${e.sender}</td>
           <td>${e.receiver}</td>
           <td>${e.subject}</td>
-          <td>${e.status}</td>
-          <td>${e.created_at}</td>
+          <td>
+            <span class="status ${e.status}">
+              ${e.status}
+            </span>
+          </td>
+          <td>${new Date(e.created_at).toLocaleString()}</td>
         </tr>
       `);
-    });
-  });
-}
+        });
+      });
+    }
 
-function next() { page++; loadData(); }
-function prev() { if (page > 1) page--; loadData(); }
+    function applyFilter() {
+      page = 1;
+      loadData();
+    }
 
-loadData();
-</script>
+    function next() {
+      page++;
+      loadData();
+    }
+
+    function prev() {
+      if (page > 1) page--;
+      loadData();
+    }
+
+    loadData();
+  </script>
 
 </body>
+
 </html>

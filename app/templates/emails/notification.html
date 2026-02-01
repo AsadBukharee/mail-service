@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+</head>
+
+<body
+    style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7fa;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation"
+                    style="width: 600px; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td
+                            style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%); border-radius: 12px 12px 0 0;">
+                            <div
+                                style="width: 80px; height: 80px; margin: 0 auto 20px; background-color: rgba(255,255,255,0.2); border-radius: 50%; line-height: 80px;">
+                                <span style="font-size: 40px;">🔔</span>
+                            </div>
+                            <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">
+                                {{notification_title}}</h1>
+                        </td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
+                                Hi <strong>{{user_name}}</strong>,
+                            </p>
+                            <p style="margin: 0 0 30px; color: #555555; font-size: 16px; line-height: 1.6;">
+                                {{notification_message}}
+                            </p>
+
+                            <!-- Alert Box (Optional - can be styled based on type) -->
+                            <table role="presentation"
+                                style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                                <tr>
+                                    <td
+                                        style="padding: 20px; background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%); border-left: 4px solid #ff6b6b; border-radius: 0 8px 8px 0;">
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <span style="font-size: 24px;">{{alert_icon}}</span>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <strong
+                                                        style="color: #333; display: block; margin-bottom: 5px;">{{alert_title}}</strong>
+                                                    <p
+                                                        style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">
+                                                        {{alert_message}}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Details Section -->
+                            <table role="presentation"
+                                style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                                <tr>
+                                    <td style="padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                                    <span style="color: #888; font-size: 13px;">Date & Time</span>
+                                                </td>
+                                                <td
+                                                    style="padding: 8px 0; border-bottom: 1px solid #eee; text-align: right;">
+                                                    <span
+                                                        style="color: #333; font-size: 14px; font-weight: 500;">{{event_datetime}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                                    <span style="color: #888; font-size: 13px;">Category</span>
+                                                </td>
+                                                <td
+                                                    style="padding: 8px 0; border-bottom: 1px solid #eee; text-align: right;">
+                                                    <span
+                                                        style="display: inline-block; padding: 4px 12px; background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%); color: #fff; font-size: 12px; border-radius: 20px;">{{category}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px 0;">
+                                                    <span style="color: #888; font-size: 13px;">Reference ID</span>
+                                                </td>
+                                                <td style="padding: 8px 0; text-align: right;">
+                                                    <span
+                                                        style="color: #333; font-size: 14px; font-family: monospace;">{{reference_id}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- CTA Button -->
+                            <table role="presentation" style="width: 100%;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{action_url}}"
+                                            style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600; border-radius: 8px; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);">
+                                            {{action_text}}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td
+                            style="padding: 30px 40px; background-color: #f8f9fa; border-radius: 0 0 12px 12px; text-align: center;">
+                            <p style="margin: 0 0 15px; color: #888888; font-size: 14px;">
+                                <a href="{{preferences_url}}" style="color: #ff6b6b; text-decoration: none;">Manage
+                                    notification preferences</a>
+                            </p>
+                            <p style="margin: 0; color: #aaaaaa; font-size: 12px;">
+                                © {{year}} {{company_name}}. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

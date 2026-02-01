@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+</head>
+
+<body
+    style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7fa;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation"
+                    style="width: 600px; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td
+                            style="padding: 40px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 12px 12px 0 0;">
+                            <table role="presentation" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700;">
+                                            {{company_name}}</h1>
+                                        <p style="margin: 5px 0 0; color: rgba(255,255,255,0.7); font-size: 14px;">
+                                            {{company_address}}</p>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span
+                                            style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%); color: #fff; font-size: 14px; font-weight: 600; border-radius: 20px;">INVOICE</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Invoice Details -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <!-- Invoice Info -->
+                            <table role="presentation" style="width: 100%; margin-bottom: 30px;">
+                                <tr>
+                                    <td style="vertical-align: top;">
+                                        <p
+                                            style="margin: 0 0 5px; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+                                            Bill To</p>
+                                        <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">
+                                            {{customer_name}}</p>
+                                        <p style="margin: 5px 0 0; color: #666; font-size: 14px; line-height: 1.5;">
+                                            {{customer_address}}</p>
+                                    </td>
+                                    <td style="vertical-align: top; text-align: right;">
+                                        <p style="margin: 0 0 5px; color: #888; font-size: 12px;">Invoice Number</p>
+                                        <p style="margin: 0 0 15px; color: #333; font-size: 16px; font-weight: 600;">
+                                            #{{invoice_number}}</p>
+                                        <p style="margin: 0 0 5px; color: #888; font-size: 12px;">Date Issued</p>
+                                        <p style="margin: 0 0 15px; color: #333; font-size: 14px;">{{issue_date}}</p>
+                                        <p style="margin: 0 0 5px; color: #888; font-size: 12px;">Due Date</p>
+                                        <p style="margin: 0; color: #e74c3c; font-size: 14px; font-weight: 600;">
+                                            {{due_date}}</p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Line Items -->
+                            <table role="presentation"
+                                style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                                <tr>
+                                    <td
+                                        style="padding: 12px 15px; background-color: #1a1a2e; color: #fff; font-size: 13px; font-weight: 600; border-radius: 8px 0 0 0;">
+                                        Description</td>
+                                    <td
+                                        style="padding: 12px 15px; background-color: #1a1a2e; color: #fff; font-size: 13px; font-weight: 600; text-align: center;">
+                                        Qty</td>
+                                    <td
+                                        style="padding: 12px 15px; background-color: #1a1a2e; color: #fff; font-size: 13px; font-weight: 600; text-align: right;">
+                                        Rate</td>
+                                    <td
+                                        style="padding: 12px 15px; background-color: #1a1a2e; color: #fff; font-size: 13px; font-weight: 600; text-align: right; border-radius: 0 8px 0 0;">
+                                        Amount</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid #eee; color: #333;">
+                                        {{item_1_desc}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #666; text-align: center;">
+                                        {{item_1_qty}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #666; text-align: right;">
+                                        {{item_1_rate}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #333; text-align: right; font-weight: 600;">
+                                        {{item_1_amount}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid #eee; color: #333;">
+                                        {{item_2_desc}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #666; text-align: center;">
+                                        {{item_2_qty}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #666; text-align: right;">
+                                        {{item_2_rate}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #333; text-align: right; font-weight: 600;">
+                                        {{item_2_amount}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid #eee; color: #333;">
+                                        {{item_3_desc}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #666; text-align: center;">
+                                        {{item_3_qty}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #666; text-align: right;">
+                                        {{item_3_rate}}</td>
+                                    <td
+                                        style="padding: 15px; border-bottom: 1px solid #eee; color: #333; text-align: right; font-weight: 600;">
+                                        {{item_3_amount}}</td>
+                                </tr>
+                            </table>
+
+                            <!-- Totals -->
+                            <table role="presentation" style="width: 100%; margin-bottom: 30px;">
+                                <tr>
+                                    <td style="width: 60%;"></td>
+                                    <td>
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td style="padding: 8px 0; color: #666;">Subtotal</td>
+                                                <td style="padding: 8px 0; text-align: right; color: #333;">{{subtotal}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px 0; color: #666;">Tax ({{tax_rate}})</td>
+                                                <td style="padding: 8px 0; text-align: right; color: #333;">
+                                                    {{tax_amount}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    style="padding: 15px 0; border-top: 2px solid #1a1a2e; color: #1a1a2e; font-size: 18px; font-weight: 700;">
+                                                    Total Due</td>
+                                                <td
+                                                    style="padding: 15px 0; border-top: 2px solid #1a1a2e; text-align: right; color: #00b4db; font-size: 24px; font-weight: 700;">
+                                                    {{total}}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Payment Info -->
+                            <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                                        <strong style="color: #333; display: block; margin-bottom: 10px;">💳 Payment
+                                            Information</strong>
+                                        <p style="margin: 0; color: #555; font-size: 14px; line-height: 1.6;">
+                                            Bank: {{bank_name}}<br>
+                                            Account: {{account_number}}<br>
+                                            Sort Code: {{sort_code}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td
+                            style="padding: 30px 40px; background-color: #f8f9fa; border-radius: 0 0 12px 12px; text-align: center;">
+                            <p style="margin: 0 0 10px; color: #888888; font-size: 14px;">
+                                Questions about this invoice? <a href="mailto:{{support_email}}"
+                                    style="color: #00b4db; text-decoration: none;">{{support_email}}</a>
+                            </p>
+                            <p style="margin: 0; color: #aaaaaa; font-size: 12px;">
+                                © {{year}} {{company_name}}. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

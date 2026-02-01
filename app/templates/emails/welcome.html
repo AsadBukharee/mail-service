@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7fa;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation" style="width: 600px; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px 12px 0 0;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700;">Welcome! 🎉</h1>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
+                                Hi <strong>{{user_name}}</strong>,
+                            </p>
+                            <p style="margin: 0 0 20px; color: #555555; font-size: 16px; line-height: 1.6;">
+                                Welcome to <strong>{{company_name}}</strong>! We're thrilled to have you on board. Your account has been successfully created and you're all set to get started.
+                            </p>
+                            <p style="margin: 0 0 30px; color: #555555; font-size: 16px; line-height: 1.6;">
+                                Here are a few things you can do to get started:
+                            </p>
+                            
+                            <!-- Features List -->
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                                <tr>
+                                    <td style="padding: 15px; background-color: #f8f9ff; border-radius: 8px; margin-bottom: 10px;">
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <span style="display: inline-block; width: 32px; height: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; text-align: center; line-height: 32px; color: #fff;">✓</span>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <strong style="color: #333;">Complete your profile</strong>
+                                                    <p style="margin: 5px 0 0; color: #666; font-size: 14px;">Add your details to personalize your experience</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr><td style="height: 10px;"></td></tr>
+                                <tr>
+                                    <td style="padding: 15px; background-color: #f8f9ff; border-radius: 8px;">
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <span style="display: inline-block; width: 32px; height: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; text-align: center; line-height: 32px; color: #fff;">✓</span>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <strong style="color: #333;">Explore features</strong>
+                                                    <p style="margin: 5px 0 0; color: #666; font-size: 14px;">Discover all the tools available to you</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- CTA Button -->
+                            <table role="presentation" style="width: 100%;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{login_url}}" style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600; border-radius: 8px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">
+                                            Get Started →
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 30px 40px; background-color: #f8f9fa; border-radius: 0 0 12px 12px; text-align: center;">
+                            <p style="margin: 0 0 10px; color: #888888; font-size: 14px;">
+                                Need help? <a href="{{support_url}}" style="color: #667eea; text-decoration: none;">Contact Support</a>
+                            </p>
+                            <p style="margin: 0; color: #aaaaaa; font-size: 12px;">
+                                © {{year}} {{company_name}}. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

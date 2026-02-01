@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mail Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 40px;
+        }
+        h1 {
+            color: #38bdf8;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 12px 0;
+        }
+        a {
+            color: #22d3ee;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .tag {
+            font-size: 12px;
+            background: #1e293b;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📧 Mail Service</h1>
+    <p>Quick access links:</p>
+
+    <ul>
+        {% for link in links %}
+        <li>
+            <a href="{{ link.url }}">{{ link.name }}</a>
+            <span class="tag">{{ link.url }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
